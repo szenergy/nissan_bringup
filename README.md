@@ -5,7 +5,7 @@
 Terminal 1:
 ```
 cd ~/ros2_ws/src
-git clone https://github.com/jkk-research/nissan_bringup
+git clone https://github.com/szenergy/nissan_bringup
 cd ~/ros2_ws
 colcon build --packages-select nissan_bringup
 ```
