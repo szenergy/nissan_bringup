@@ -13,6 +13,7 @@ colcon build --packages-select nissan_bringup
 Terminal 2:
 ```
 source ~/ros2_ws/install/local_setup.bash && source ~/ros2_ws/install/setup.bash
+ros2 launch nissan_bringup tf_static.launch.py
 ros2 launch nissan_bringup nissan.leaf.bringup.2020.A.launch.py
 ```
 
