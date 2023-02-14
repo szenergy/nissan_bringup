@@ -1,0 +1,1 @@
+![img](Nissan_Leaf_Simulation_02_06.png)

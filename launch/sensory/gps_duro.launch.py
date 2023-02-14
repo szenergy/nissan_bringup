@@ -14,22 +14,22 @@ euler_based_orientation:
 - false: quaternion based, not enabled by default, please enable SPB message SBP_MSG_ORIENT_QUAT 0x0220 decimal 544
 """
 def generate_launch_description():
-    ld = LaunchDescription()
-    duro_node = Node(
-        package="duro_gps_driver",
-        executable="duro_node",
-        parameters=[
-            {"ip_address": "192.168.1.10"},
-            {"port": 55555},
-            {"gps_receiver_frame_id": "duro"},
-            {"imu_frame_id": "duro"},
-            {"utm_frame_id": "map"},
-            {"orientation_source": "gps"},
-            {"z_coord_ref_switch": "zero"},
-            {"z_coord_exact_height": 1.7},
-            {"euler_based_orientation": True}           
-  
-        ]
-    )
-    ld.add_action(duro_node)
-    return ld
+    LaunchDescription([
+        Node(
+            package="duro_gps_driver",
+            executable="duro_node",
+            parameters=[
+                {
+                    "ip_address": "192.168.1.10",
+                    "port": 55555,
+                    "gps_receiver_frame_id": "duro",
+                    "imu_frame_id": "duro",
+                    "utm_frame_id": "map",
+                    "orientation_source": "gps",
+                    "z_coord_ref_switch": "zero",
+                    "z_coord_exact_height": 1.7,
+                    "euler_based_orientation": True,
+                }
+            ],
+        ),
+    ])
