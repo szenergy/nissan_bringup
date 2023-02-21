@@ -47,9 +47,9 @@ def generate_launch_description():
             package='tf2_ros',
             #namespace='nissan1',
             executable='static_transform_publisher',
-            name='zed_camera_front_tf_publisher',
+            name='zed2_camera_center_tf_publisher',
             output='screen',
-            arguments=['1.874', '0.0', '1.286', '0.0', '0.0', '0.0', 'base_link', 'zed_camera_front'],
+            arguments=['1.874', '0.0', '1.286', '0.0', '0.0', '0.0', 'base_link', 'zed2_camera_center'],
         ),
         Node(
             package='tf2_ros',
@@ -79,25 +79,9 @@ def generate_launch_description():
             package='tf2_ros',
             #namespace='nissan1',
             executable='static_transform_publisher',
-            name='ouster_right_tf_publisher',
-            output='screen',
-            arguments=['1.769', '-0.58', '1.278', '0.0', '0.0', '0.0', 'base_link', 'right_os1/os1_sensor'],
-        ),
-        Node(
-            package='tf2_ros',
-            #namespace='nissan1',
-            executable='static_transform_publisher',
             name='duro_gps_imu_tf_publisher',
             output='screen',
             arguments=['0.0', '0.0', '0.2', '0.0', '0.0', '0.0', 'base_link', 'duro_gps_imu'],
-        ),
-        Node(
-            package='tf2_ros',
-            #namespace='nissan1',
-            executable='static_transform_publisher',
-            name='ouster_left_tf_publisher',
-            output='screen',
-            arguments=['1.769', '0.58', '1.278', '0.0', '0.0', '0.0', 'base_link', 'left_os1/os1_sensor'],
         ),
         Node(
             package='tf2_ros',
@@ -111,33 +95,49 @@ def generate_launch_description():
             package='tf2_ros',
             #namespace='nissan1',
             executable='static_transform_publisher',
-            name='os1sensorlidarleft',
+            name='os_left_tf_publisher',
             output='screen',
-            arguments=['0.0', '0.0', '0.0', '0.0', '0.0', '0.0', 'left_os1/os1_sensor', 'left_os1/os1_lidar'],
+            arguments=['1.769', '0.58', '1.278', '0.0', '0.0', '0.0', 'base_link', 'os_left'],
         ),
         Node(
             package='tf2_ros',
             #namespace='nissan1',
             executable='static_transform_publisher',
-            name='os1sensorimuleft',
+            name='os_right_tf_publisher',
             output='screen',
-            arguments=['0.0', '0.0', '0.0', '0.0', '0.0', '0.0', 'left_os1/os1_sensor', 'left_os1/os1_imu'],
+            arguments=['1.769', '-0.58', '1.278', '0.0', '0.0', '0.0', 'base_link', 'os_right'],
         ),
         Node(
             package='tf2_ros',
             #namespace='nissan1',
             executable='static_transform_publisher',
-            name='os1sensorlidarright',
+            name='os_sensor_lidar_left',
             output='screen',
-            arguments=['0.0', '0.0', '0.0', '0.0', '0.0', '0.0', 'right_os1/os1_sensor', 'right_os1/os1_lidar'],
+            arguments=['0.0', '0.0', '0.0', '0.0', '0.0', '0.0', 'os_left', 'os_left_data_frame'],
         ),
         Node(
             package='tf2_ros',
             #namespace='nissan1',
             executable='static_transform_publisher',
-            name='os1sensorimuright',
+            name='os_sensor_imu_left',
             output='screen',
-            arguments=['0.0', '0.0', '0.0', '0.0', '0.0', '0.0', 'right_os1/os1_sensor', 'right_os1/os1_imu'],
+            arguments=['0.0', '0.0', '0.0', '0.0', '0.0', '0.0', 'os_left', 'os_left_imu_data_frame'],
+        ),
+        Node(
+            package='tf2_ros',
+            #namespace='nissan1',
+            executable='static_transform_publisher',
+            name='os_sensor_lidar_right',
+            output='screen',
+            arguments=['0.0', '0.0', '0.0', '0.0', '0.0', '0.0', 'os_right', 'os_right_data_frame'],
+        ),
+        Node(
+            package='tf2_ros',
+            #namespace='nissan1',
+            executable='static_transform_publisher',
+            name='os_sensor_imu_right',
+            output='screen',
+            arguments=['0.0', '0.0', '0.0', '0.0', '0.0', '0.0', 'os_right', 'os_right_imu_data_frame'],
         ),
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(
@@ -148,13 +148,14 @@ def generate_launch_description():
                 )
             )
         ),
-        IncludeLaunchDescription(
-            PythonLaunchDescriptionSource(
-                path.join(
-                    get_package_share_directory('nissan_bringup'),
-                    'launch',
-                    'path_and_steering_marker.launch.py'
-                )
-            )
-        ),
+        # TODO: launch and executeable file missing
+        # IncludeLaunchDescription(
+        #     PythonLaunchDescriptionSource(
+        #         path.join(
+        #             get_package_share_directory('nissan_bringup'),
+        #             'launch',
+        #             'path_and_steering_marker.launch.py'
+        #         )
+        #     )
+        # ),
     ])

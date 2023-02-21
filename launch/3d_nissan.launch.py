@@ -1,7 +1,7 @@
 from launch import LaunchDescription
 from launch_ros.actions import Node
-from launch.substitutions import LaunchConfiguration
 from launch.substitutions import PathJoinSubstitution
+from ament_index_python.packages import get_package_share_directory
 
 def generate_launch_description():
     return LaunchDescription([
@@ -12,7 +12,7 @@ def generate_launch_description():
             parameters=[
                 {
                     'robot_description': PathJoinSubstitution([
-                        LaunchConfiguration('nissan_bringup'),
+                        get_package_share_directory('nissan_bringup'),
                         'param',
                         'nissan_leaf_robotdescription.ref.xml'
                     ])

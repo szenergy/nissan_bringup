@@ -14,7 +14,7 @@ euler_based_orientation:
 - false: quaternion based, not enabled by default, please enable SPB message SBP_MSG_ORIENT_QUAT 0x0220 decimal 544
 """
 def generate_launch_description():
-    LaunchDescription([
+    return LaunchDescription([
         Node(
             package="duro_gps_driver",
             executable="duro_node",
