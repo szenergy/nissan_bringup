@@ -9,6 +9,7 @@ from os import path
 def generate_launch_description():
 
     return LaunchDescription([
+        # TODO: map tf (szenergy-utility-programs)
         Node(
             package='tf2_ros',
             #namespace='nissan1',
@@ -39,9 +40,9 @@ def generate_launch_description():
             package='tf2_ros',
             #namespace='nissan1',
             executable='static_transform_publisher',
-            name='velodyne_left_tf_publisher',
+            name='duro_gps_imu_tf_publisher',
             output='screen',
-            arguments=['1.749', '0.703', '1.166', '0.0', '0.0', '-1.0471975511965976', 'base_link', 'velodyne_left'],
+            arguments=['0.0', '0.0', '0.2', '0.0', '0.0', '0.0', 'base_link', 'duro_gps_imu'],
         ),
         Node(
             package='tf2_ros',
@@ -50,38 +51,6 @@ def generate_launch_description():
             name='zed2_camera_center_tf_publisher',
             output='screen',
             arguments=['1.874', '0.0', '1.286', '0.0', '0.0', '0.0', 'base_link', 'zed2_camera_center'],
-        ),
-        Node(
-            package='tf2_ros',
-            #namespace='nissan1',
-            executable='static_transform_publisher',
-            name='velodyne_right_tf_publisher',
-            output='screen',
-            arguments=['1.749', '-0.703', '1.166', '0.0', '0.0', '1.0471975511965976', 'base_link', 'velodyne_right'],
-        ),
-        Node(
-            package='tf2_ros',
-            #namespace='nissan1',
-            executable='static_transform_publisher',
-            name='sick_tf_publisher',
-            output='screen',
-            arguments=['3.707', '-0.351', '0.113', '0.0', '0.0', '0.0', 'base_link', 'laser'],
-        ),
-        Node(
-            package='tf2_ros',
-            #namespace='nissan1',
-            executable='static_transform_publisher',
-            name='conti_tf_publisher',
-            output='screen',
-            arguments=['3.707', '', '0.360', '0.113', '0.0', '0.0', '0.0', 'base_link', 'radar'],
-        ),
-        Node(
-            package='tf2_ros',
-            #namespace='nissan1',
-            executable='static_transform_publisher',
-            name='duro_gps_imu_tf_publisher',
-            output='screen',
-            arguments=['0.0', '0.0', '0.2', '0.0', '0.0', '0.0', 'base_link', 'duro_gps_imu'],
         ),
         Node(
             package='tf2_ros',
@@ -158,4 +127,5 @@ def generate_launch_description():
         #         )
         #     )
         # ),
+
     ])

@@ -2,7 +2,7 @@
 🚗 ROS2 package for basic functions on Nissan Leaf
 
 
-Terminal 1:
+## Install:
 ```
 cd ~/ros2_ws/src
 git clone https://github.com/szenergy/nissan_bringup
@@ -10,13 +10,13 @@ cd ~/ros2_ws
 colcon build --packages-select nissan_bringup
 ```
 
-Terminal 2:
-```
-source ~/ros2_ws/install/local_setup.bash && source ~/ros2_ws/install/setup.bash
-ros2 launch nissan_bringup tf_static.launch.py
-ros2 launch nissan_bringup nissan.leaf.bringup.2020.A.launch.py
-```
+# Other packages
 
+## Links
+- [ZED](https://github.com/stereolabs/zed-ros2-wrapper)
+- [ouster](https://github.com/ros-drivers/ros2_ouster_drivers/tree/humble)
+- [duro gps](https://github.com/szenergy/duro_gps_driver/tree/ros2-humble)
+- [novatel gps](https://github.com/novatel/novatel_oem7_driver/tree/humble)
 
 ## Zed 
 ```
