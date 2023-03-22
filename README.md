@@ -17,6 +17,7 @@ colcon build --packages-select nissan_bringup
 - [ouster](https://github.com/ros-drivers/ros2_ouster_drivers/tree/humble)
 - [duro gps](https://github.com/szenergy/duro_gps_driver/tree/ros2-humble)
 - [novatel gps](https://github.com/novatel/novatel_oem7_driver/tree/humble)
+- [SICK lidar](https://github.com/szenergy/sick_scan2)
 
 ## Zed 
 ```

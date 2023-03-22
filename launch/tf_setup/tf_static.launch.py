@@ -108,6 +108,14 @@ def generate_launch_description():
             output='screen',
             arguments=['0.0', '0.0', '0.0', '0.0', '0.0', '0.0', 'os_right', 'os_right_imu_data_frame'],
         ),
+        Node(
+            package='tf2_ros',
+            #namespace='nissan1',
+            executable='static_transform_publisher',
+            name='sick_tf_publisher',
+            output='screen',
+            arguments=['3.707', '-0.351', '0.113', '0.0', '0.0', '0.0', 'base_link', 'laser'],
+        ),
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(
                 path.join(
