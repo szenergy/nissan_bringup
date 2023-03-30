@@ -9,7 +9,6 @@ from os import path
 def generate_launch_description():
 
     return LaunchDescription([
-        # TODO: map tf (szenergy-utility-programs)
         Node(
             package='tf2_ros',
             #namespace='nissan1',
@@ -27,6 +26,13 @@ def generate_launch_description():
             name='zala0_tf_publisher',
             output='screen',
             arguments=['639770.0', '5195040.0', '0.0','0', '0', '0', '1','map','map_zala_0'],
+        ),
+        Node(
+            package='tf2_ros',
+            executable='static_transform_publisher',
+            name='base_gps_tf_publisher',
+            output='screen',
+            arguments=['0.0', '0.49', '-1.479','0', '0', '0', '1', 'gps', 'base_link'],
         ),
         Node(
             package='tf2_ros',

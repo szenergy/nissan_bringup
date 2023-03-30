@@ -29,6 +29,8 @@ def generate_launch_description():
                     "orientation_source": "gps",
                     "z_coord_ref_switch": "zero",
                     "z_coord_exact_height": 1.7,
+                    "tf_frame_id": "map",
+                    "tf_child_frame_id": "gps",
                     "euler_based_orientation": True,
                 }
             ],
