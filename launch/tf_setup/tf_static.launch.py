@@ -15,9 +15,17 @@ def generate_launch_description():
             executable='static_transform_publisher',
             name='gyor0_tf_publisher',
             output='screen',
-            ##  Old-style arguments are deprecated, parameters should be used, but this does not work TODO
-            arguments=['697237.0', '5285644.0', '0.0','0', '0', '0', '1','map','map_gyor_0'],
-            #parameters=[{'translation.x': 697237.0, 'translation.y': 5285644.0, 'translation.z': 0.0, 'rotation.x': 0.0, 'rotation.y': 0.0, 'rotation.z': 0.0, 'rotation.w': 1.0, 'frame_id': 'map', 'child_frame_id': 'map_gyor_0'}]
+            arguments=[
+                '--x',  '697237.0',
+                '--y',  '5285644.0',
+                '--z',  '0.0',
+                '--qx', '0',
+                '--qy', '0',
+                '--qz', '0',
+                '--qw', '1',
+
+                '--frame-id',       'map', 
+                '--child-frame-id', 'map_gyor_0'],
         ),
         Node(
             package='tf2_ros',
@@ -25,14 +33,33 @@ def generate_launch_description():
             executable='static_transform_publisher',
             name='zala0_tf_publisher',
             output='screen',
-            arguments=['639770.0', '5195040.0', '0.0','0', '0', '0', '1','map','map_zala_0'],
+            arguments=[
+                '--x',  '639770.0',
+                '--y',  '5195040.0',
+                '--z',  '0.0',
+                '--qx', '0',
+                '--qy', '0',
+                '--qz', '0',
+                '--qw', '1',
+
+                '--frame-id',       'map',
+                '--child-frame-id', 'map_zala_0'],
         ),
         Node(
             package='tf2_ros',
             executable='static_transform_publisher',
             name='base_gps_tf_publisher',
             output='screen',
-            arguments=['0.0', '0.49', '-1.479','0', '0', '0', '1', 'gps', 'base_link'],
+            arguments=[
+                '--x',      '0.196',
+                '--y',      '0.0',
+                '--z',      '-1.1',
+                '--yaw',    '0',
+                '--pitch',  '0',
+                '--roll',   '0',
+
+                '--frame-id',       'gps', 
+                '--child-frame-id', 'base_link'],
         ),
         Node(
             package='tf2_ros',
@@ -40,7 +67,16 @@ def generate_launch_description():
             executable='static_transform_publisher',
             name='duro_gps_tf_publisher',
             output='screen',
-            arguments=['0.0', '0.0', '0.2', '0.0261799', '0.0', '0.0', 'base_link','duro_gps'],
+            arguments=[
+                '--x',      '0.0',
+                '--y',      '0.0',
+                '--z',      '0.2',
+                '--yaw',    '0.0261799',
+                '--pitch',  '0.0',
+                '--roll',   '0.0',
+
+                '--frame-id',       'base_link', 
+                '--child-frame-id', 'duro_gps'],
         ),
         Node(
             package='tf2_ros',
@@ -48,7 +84,16 @@ def generate_launch_description():
             executable='static_transform_publisher',
             name='duro_gps_imu_tf_publisher',
             output='screen',
-            arguments=['0.0', '0.0', '0.2', '0.0', '0.0', '0.0', 'base_link', 'duro_gps_imu'],
+            arguments=[
+                '--x',      '0.0',
+                '--y',      '0.0',
+                '--z',      '0.2',
+                '--yaw',    '0.0',
+                '--pitch',  '0.0',
+                '--roll',   '0.0',
+
+                '--frame-id',       'base_link', 
+                '--child-frame-id', 'duro_gps_imu'],
         ),
         Node(
             package='tf2_ros',
@@ -56,7 +101,16 @@ def generate_launch_description():
             executable='static_transform_publisher',
             name='zed2_camera_center_tf_publisher',
             output='screen',
-            arguments=['1.874', '0.0', '1.286', '0.0', '0.0', '0.0', 'base_link', 'zed2_camera_center'],
+            arguments=[
+                '--x',      '1.874',
+                '--y',      '0.0',
+                '--z',      '1.286',
+                '--yaw',    '0.0',
+                '--pitch',  '0.0',
+                '--roll',   '0.0',
+
+                '--frame-id',       'base_link',
+                '--child-frame-id', 'zed2_camera_center'],
         ),
         Node(
             package='tf2_ros',
@@ -64,7 +118,16 @@ def generate_launch_description():
             executable='static_transform_publisher',
             name='base_link_ground_link_publisher',
             output='screen',
-            arguments=['0.0', '0.0', '-0.316', '0.0', '0.0', '0.0', 'base_link', 'ground_link'],
+            arguments=[
+                '--x',      '0.0',
+                '--y',      '0.0',
+                '--z',      '-0.316',
+                '--yaw',    '0.0',
+                '--pitch',  '0.0',
+                '--roll',   '0.0',
+
+                '--frame-id',       'base_link',
+                '--child-frame-id', 'ground_link'],
         ),
         Node(
             package='tf2_ros',
@@ -72,7 +135,16 @@ def generate_launch_description():
             executable='static_transform_publisher',
             name='os_left_tf_publisher',
             output='screen',
-            arguments=['1.769', '0.58', '1.278', '0.0', '0.0', '0.0', 'base_link', 'os_left'],
+            arguments=[
+                '--x',      '1.769',
+                '--y',      '0.58',
+                '--z',      '1.278',
+                '--yaw',    '0.0',
+                '--pitch',  '0.0',
+                '--roll',   '0.0',
+
+                '--frame-id',       'base_link',
+                '--child-frame-id', 'os_left'],
         ),
         Node(
             package='tf2_ros',
@@ -80,7 +152,16 @@ def generate_launch_description():
             executable='static_transform_publisher',
             name='os_right_tf_publisher',
             output='screen',
-            arguments=['1.769', '-0.58', '1.278', '0.0', '0.0', '0.0', 'base_link', 'os_right'],
+            arguments=[
+                '--x',      '1.769',
+                '--y',      '-0.58',
+                '--z',      '1.278',
+                '--yaw',    '0.0',
+                '--pitch',  '0.0',
+                '--roll',   '0.0',
+
+                '--frame-id',       'base_link',
+                '--child-frame-id', 'os_right'],
         ),
         Node(
             package='tf2_ros',
@@ -88,7 +169,16 @@ def generate_launch_description():
             executable='static_transform_publisher',
             name='os_sensor_lidar_left',
             output='screen',
-            arguments=['0.0', '0.0', '0.0', '0.0', '0.0', '0.0', 'os_left', 'os_left_data_frame'],
+            arguments=[
+                '--x',      '0.0',
+                '--y',      '0.0',
+                '--z',      '0.0',
+                '--yaw',    '0.0',
+                '--pitch',  '0.0',
+                '--roll',   '0.0',
+
+                '--frame-id',       'os_left',
+                '--child-frame-id', 'os_left_data_frame'],
         ),
         Node(
             package='tf2_ros',
@@ -96,7 +186,16 @@ def generate_launch_description():
             executable='static_transform_publisher',
             name='os_sensor_imu_left',
             output='screen',
-            arguments=['0.0', '0.0', '0.0', '0.0', '0.0', '0.0', 'os_left', 'os_left_imu_data_frame'],
+            arguments=[
+                '--x',      '0.0',
+                '--y',      '0.0',
+                '--z',      '0.0',
+                '--yaw',    '0.0',
+                '--pitch',  '0.0',
+                '--roll',   '0.0',
+
+                '--frame-id',       'os_left',
+                '--child-frame-id', 'os_left_imu_data_frame'],
         ),
         Node(
             package='tf2_ros',
@@ -104,7 +203,16 @@ def generate_launch_description():
             executable='static_transform_publisher',
             name='os_sensor_lidar_right',
             output='screen',
-            arguments=['0.0', '0.0', '0.0', '0.0', '0.0', '0.0', 'os_right', 'os_right_data_frame'],
+            arguments=[
+                '--x',      '0.0',
+                '--y',      '0.0',
+                '--z',      '0.0',
+                '--yaw',    '0.0',
+                '--pitch',  '0.0',
+                '--roll',   '0.0',
+
+                '--frame-id',       'os_right',
+                '--child-frame-id', 'os_right_data_frame'],
         ),
         Node(
             package='tf2_ros',
@@ -112,7 +220,16 @@ def generate_launch_description():
             executable='static_transform_publisher',
             name='os_sensor_imu_right',
             output='screen',
-            arguments=['0.0', '0.0', '0.0', '0.0', '0.0', '0.0', 'os_right', 'os_right_imu_data_frame'],
+            arguments=[ 
+                '--x',      '0.0',
+                '--y',      '0.0',
+                '--z',      '0.0',
+                '--yaw',    '0.0',
+                '--pitch',  '0.0',
+                '--roll',   '0.0',
+
+                '--frame-id',       'os_right',
+                '--child-frame-id', 'os_right_imu_data_frame'],
         ),
         Node(
             package='tf2_ros',
@@ -120,7 +237,16 @@ def generate_launch_description():
             executable='static_transform_publisher',
             name='sick_tf_publisher',
             output='screen',
-            arguments=['3.707', '-0.351', '0.113', '0.0', '0.0', '0.0', 'base_link', 'laser'],
+            arguments=[
+                '--x',      '3.707',
+                '--y',      '-0.351',
+                '--z',      '0.113',
+                '--yaw',    '0.0',
+                '--pitch',  '0.0',
+                '--roll',   '0.0',
+
+                '--frame-id',       'base_link',
+                '--child-frame-id', 'laser'],
         ),
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(
