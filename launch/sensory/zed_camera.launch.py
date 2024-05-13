@@ -35,9 +35,9 @@ from launch_ros.actions import Node
 
 # ZED Configurations to be loaded by ZED Node
 default_config_common = os.path.join(
-    get_package_share_directory('zed_wrapper'),
+    get_package_share_directory('nissan_bringup'),
     'config',
-    'common.yaml'
+    'zed_config.yaml'
 )
 
 # URDF/xacro file to be loaded by the Robot State Publisher node
@@ -204,7 +204,7 @@ def generate_launch_description():
                 description='Path to an input SVO file. Note: overrides the parameter `general.svo_file` in `common.yaml`.'),
             DeclareLaunchArgument(
                 'base_frame',
-                default_value='base_link',
+                default_value='nissan9/base_link',
                 description='Name of the base link.'),
             DeclareLaunchArgument(
                 'cam_pose',

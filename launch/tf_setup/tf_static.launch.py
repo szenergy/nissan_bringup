@@ -58,8 +58,8 @@ def generate_launch_description():
                 '--pitch',  '0',
                 '--roll',   '0',
 
-                '--frame-id',       'gps', 
-                '--child-frame-id', 'base_link'],
+                '--frame-id',       'nissan9/gps', 
+                '--child-frame-id', 'nissan9/base_link'],
         ),
         Node(
             package='tf2_ros',
@@ -75,8 +75,8 @@ def generate_launch_description():
                 '--pitch',  '0.0',
                 '--roll',   '0.0',
 
-                '--frame-id',       'base_link', 
-                '--child-frame-id', 'duro_gps'],
+                '--frame-id',       'nissan9/base_link', 
+                '--child-frame-id', 'nissan9/duro_gps'],
         ),
         Node(
             package='tf2_ros',
@@ -88,12 +88,12 @@ def generate_launch_description():
                 '--x',      '0.0',
                 '--y',      '0.0',
                 '--z',      '0.2',
-                '--yaw',    '0.0',
+                '--yaw',    '0.0261799',
                 '--pitch',  '0.0',
                 '--roll',   '0.0',
 
-                '--frame-id',       'base_link', 
-                '--child-frame-id', 'duro_gps_imu'],
+                '--frame-id',       'nissan9/base_link', 
+                '--child-frame-id', 'nissan9/duro_gps_imu'],
         ),
         Node(
             package='tf2_ros',
@@ -109,8 +109,8 @@ def generate_launch_description():
                 '--pitch',  '0.0',
                 '--roll',   '0.0',
 
-                '--frame-id',       'base_link',
-                '--child-frame-id', 'zed2_camera_center'],
+                '--frame-id',       'nissan9/base_link',
+                '--child-frame-id', 'nissan9/zed2_camera_link'],
         ),
         Node(
             package='tf2_ros',
@@ -126,8 +126,8 @@ def generate_launch_description():
                 '--pitch',  '0.0',
                 '--roll',   '0.0',
 
-                '--frame-id',       'base_link',
-                '--child-frame-id', 'ground_link'],
+                '--frame-id',       'nissan9/base_link',
+                '--child-frame-id', 'nissan9/ground_link'],
         ),
         Node(
             package='tf2_ros',
@@ -143,8 +143,8 @@ def generate_launch_description():
                 '--pitch',  '0.0',
                 '--roll',   '0.0',
 
-                '--frame-id',       'base_link',
-                '--child-frame-id', 'os_left'],
+                '--frame-id',       'nissan9/base_link',
+                '--child-frame-id', 'nissan9/os_left'],
         ),
         Node(
             package='tf2_ros',
@@ -160,8 +160,8 @@ def generate_launch_description():
                 '--pitch',  '0.0',
                 '--roll',   '0.0',
 
-                '--frame-id',       'base_link',
-                '--child-frame-id', 'os_right'],
+                '--frame-id',       'nissan9/base_link',
+                '--child-frame-id', 'nissan9/os_right'],
         ),
         Node(
             package='tf2_ros',
@@ -177,8 +177,8 @@ def generate_launch_description():
                 '--pitch',  '0.0',
                 '--roll',   '0.0',
 
-                '--frame-id',       'os_left',
-                '--child-frame-id', 'os_left_data_frame'],
+                '--frame-id',       'nissan9/os_left',
+                '--child-frame-id', 'nissan9/os_left_data_frame'],
         ),
         Node(
             package='tf2_ros',
@@ -194,8 +194,8 @@ def generate_launch_description():
                 '--pitch',  '0.0',
                 '--roll',   '0.0',
 
-                '--frame-id',       'os_left',
-                '--child-frame-id', 'os_left_imu_data_frame'],
+                '--frame-id',       'nissan9/os_left',
+                '--child-frame-id', 'nissan9/os_left_imu_data_frame'],
         ),
         Node(
             package='tf2_ros',
@@ -211,8 +211,8 @@ def generate_launch_description():
                 '--pitch',  '0.0',
                 '--roll',   '0.0',
 
-                '--frame-id',       'os_right',
-                '--child-frame-id', 'os_right_data_frame'],
+                '--frame-id',       'nissan9/os_right',
+                '--child-frame-id', 'nissan9/os_right_data_frame'],
         ),
         Node(
             package='tf2_ros',
@@ -228,8 +228,8 @@ def generate_launch_description():
                 '--pitch',  '0.0',
                 '--roll',   '0.0',
 
-                '--frame-id',       'os_right',
-                '--child-frame-id', 'os_right_imu_data_frame'],
+                '--frame-id',       'nissan9/os_right',
+                '--child-frame-id', 'nissan9/os_right_imu_data_frame'],
         ),
         Node(
             package='tf2_ros',
@@ -245,18 +245,18 @@ def generate_launch_description():
                 '--pitch',  '0.0',
                 '--roll',   '0.0',
 
-                '--frame-id',       'base_link',
-                '--child-frame-id', 'laser'],
+                '--frame-id',       'nissan9/base_link',
+                '--child-frame-id', 'nissan9/laser'],
         ),
-        IncludeLaunchDescription(
-            PythonLaunchDescriptionSource(
-                path.join(
-                    get_package_share_directory('nissan_bringup'),
-                    'launch',
-                    '3d_nissan.launch.py'
-                )
-            )
-        ),
+        # IncludeLaunchDescription(
+        #     PythonLaunchDescriptionSource(
+        #         path.join(
+        #             get_package_share_directory('nissan_bringup'),
+        #             'launch',
+        #             '3d_nissan.launch.py'
+        #         )
+        #     )
+        # ),
         # TODO: launch and executeable file missing
         # IncludeLaunchDescription(
         #     PythonLaunchDescriptionSource(

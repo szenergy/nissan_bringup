@@ -1,74 +1,51 @@
-import os
-import yaml
+"""Launch an example driver that communicates using TCP"""
 
 from launch import LaunchDescription
-from launch.substitutions import LaunchConfiguration 
-from launch.actions import DeclareLaunchArgument
-from launch_ros.actions import Node
-from ament_index_python.packages import get_package_share_directory
+import launch_ros.actions
 
-PKG = "novatel_oem7_driver"
 
-def get_cfg_path(cfg):
-    return os.path.join(get_package_share_directory(PKG), "config", cfg )
-    
-
-def load_yaml(p):
-    with open(p, 'r') as f:
-        return yaml.safe_load(f)
-
-def get_params(cfg):
-    return load_yaml(get_cfg_path(cfg))
-
-def get_override_params():    
-    try:
-        oem7_param_override_path = os.environ['NOVATEL_OEM7_DRIVER_PARAM_OVERRIDES_PATH']
-    except KeyError: # No overrides specified.
-        return {}
-        
-    return load_yaml(oem7_param_override_path)
-
-      
-def arg(name, default_value, description):
-    return DeclareLaunchArgument(name = name, description = description, default_value = default_value)
-    
-
-    
 def generate_launch_description():
-
-    node = Node(
-        package=PKG,
-        namespace='gps/nova',
-        name='main',
-        executable='novatel_oem7_driver_exe',
-        
-        parameters=[
-                    get_params("std_msg_handlers.yaml"    ),
-                    get_params("std_oem7_raw_msgs.yaml"   ),
-                    get_params("std_msg_topics.yaml"      ),
-                    get_params("oem7_supported_imus.yaml" ),
-                    get_params("std_init_commands.yaml"   ),
-                    {
-                    'oem7_max_io_errors' : 10,
-                    'oem7_msg_decoder': 'Oem7MessageDecoder',
-                    'oem7_if'         : LaunchConfiguration('oem7_if'),
-                    'oem7_ip_addr'    : LaunchConfiguration('oem7_ip_addr'),
-                    'oem7_port'       : LaunchConfiguration('oem7_port')
-                    },
-                    get_override_params() # Must be last to override
-                    ],
-    
-        output='screen',
+    container = launch_ros.actions.ComposableNodeContainer(
+        name='novatel_gps_container',
+        namespace='',
+        package='rclcpp_components',
+        executable='component_container',
+        composable_node_descriptions=[
+            launch_ros.descriptions.ComposableNode(
+                package='novatel_gps_driver',
+                namespace='nissan9/gps/nova',
+                plugin='novatel_gps_driver::NovatelGpsNode',
+                name='novatel_gps',
+                parameters=[{
+                    'connection_type': 'tcp',
+                    'device': '192.168.1.11:3001',
+                    'verbose': False,
+                    'imu_sample_rate': -1.0,
+                    'use_binary_messages': True,
+                    'publish_novatel_positions': False,
+                    'publish_imu_messages_': True,
+                    'publish_novatel_utm_positions': True,
+                    'publish_imu_messages': True,
+                    'publish_novatel_velocity': False,
+                    'publish_novatel_psrdop2': False,
+                    'imu_frame_id': '/nissan9/nova/imu',
+                    'frame_id': '/nissan9/gps/nova',
+                    'publish_novatel_dual_antenna_heading': True,
+                    # 'x_coord_offset': 0.0,
+                    # 'y_coord_offset': 0.0,
+                    # 'x_coord_offset': -697237.0, # map_gyor_0
+                    # 'y_coord_offset': -5285644.0, # map_gyor_0
+                    # 'x_coord_offset': -639770.0, # map_zala_0
+                    # 'y_coord_offset': -5195040.0, # map_zala_0
+                    'z_coord_exact_height': 1.8,
+                    'z_coord_ref_switch': "exact",
+                    'tf_frame_id': "map",
+                    'tf_child_frame_id': "nissan9/nova/gps",
+                    'utm_frame_id': "map",
+                }]
+            )
+        ],
+        output='screen'
     )
-    
-    ip_arg   = arg('oem7_ip_addr', '192.168.1.11',     'IP Address of Oem7 Receiver, e.g. 192.168.1.2')
-    port_arg = arg('oem7_port',   '3001',              'TCP or UDP port, e.g. 3002')
-    if_arg   = arg('oem7_if',     'Oem7ReceiverTcp',   'Interface Type: Oem7ReceiverTcp or Oem7ReceiverUdp')
-    
-    return LaunchDescription([ip_arg, port_arg, if_arg, 
-                              node])
 
-    
-
-
-        
+    return LaunchDescription([container])

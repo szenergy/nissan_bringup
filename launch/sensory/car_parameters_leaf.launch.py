@@ -7,7 +7,7 @@ from launch.substitutions import PathJoinSubstitution
 def generate_launch_description():
 
     return LaunchDescription([
-        DeclareLaunchArgument('namespace', default_value='leaf'),
+        DeclareLaunchArgument('namespace', default_value='nissan9'),
         
         # params
         Node(

@@ -2,8 +2,8 @@
 
 <robot name="nissanleaf">
   <!--GEN START: Kinematic links-->
-  <!--GEN LINK: base_link-->
-  <link name="base_link">
+  <!--GEN LINK: nissan9/base_link-->
+  <link name="nissan9/base_link">
     <visual>
       <origin rpy="0.0 0.0 0.0" xyz="-0.0 0.0 0.0"/>
       <geometry>

@@ -76,7 +76,7 @@ def generate_launch_description():
     return launch.LaunchDescription([
         GroupAction(
             actions=[
-                PushRosNamespace('os_right'),
+                PushRosNamespace('nissan9/os_right'),
 
                 params_file_arg,
                 os_driver,

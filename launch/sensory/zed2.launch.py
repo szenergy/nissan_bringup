@@ -15,31 +15,32 @@
 import os
 
 from launch import LaunchDescription
-from launch.actions import IncludeLaunchDescription
+from launch.actions import IncludeLaunchDescription, GroupAction
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from ament_index_python.packages import get_package_share_directory
-
+from launch_ros.actions import PushRosNamespace
 
 def generate_launch_description():
 
     # Camera model (force value)
     camera_model = 'zed2'
-
-    # ZED Wrapper node
-    zed_wrapper_launch = IncludeLaunchDescription(
-        launch_description_source=PythonLaunchDescriptionSource([
-            get_package_share_directory('nissan_bringup'),
-            '/launch/sensory/zed_camera.launch.py'
-        ]),
-        launch_arguments={
-            'camera_model': camera_model
-        }.items()
+    bringup_cmd_group = GroupAction(
+        [
+            # ZED Wrapper node
+            IncludeLaunchDescription(
+                launch_description_source=PythonLaunchDescriptionSource([
+                    get_package_share_directory('nissan_bringup'),
+                    '/launch/sensory/zed_camera.launch.py'
+                ]),
+                launch_arguments={
+                    'camera_model': camera_model,
+                    'camera_name': 'nissan9/zed2'
+                }.items()
+            ),
+        ]
     )
 
-    # Define LaunchDescription variable
     ld = LaunchDescription()
-
-    # Add nodes to LaunchDescription
-    ld.add_action(zed_wrapper_launch)
+    ld.add_action(bringup_cmd_group)
 
     return ld
