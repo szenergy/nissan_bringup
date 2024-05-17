@@ -23,14 +23,14 @@ def generate_launch_description():
                 {
                     "ip_address": "192.168.1.10",
                     "port": 55555,
-                    "gps_receiver_frame_id": "duro",
-                    "imu_frame_id": "duro",
+                    "gps_receiver_frame_id": "nissan9/duro_gps",
+                    "imu_frame_id": "nissan9/duro_gps_imu",
                     "utm_frame_id": "map",
                     "orientation_source": "gps",
                     "z_coord_ref_switch": "exact",
                     "z_coord_exact_height": 1.7,
                     "tf_frame_id": "map",
-                    "tf_child_frame_id": "gps",
+                    "tf_child_frame_id": "nissan9/gps",
                     "zero_based_pose": False,
                     "euler_based_orientation": True,
                 }
