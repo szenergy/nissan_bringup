@@ -18,7 +18,7 @@ def generate_launch_description():
                 name='novatel_gps',
                 parameters=[{
                     'connection_type': 'tcp',
-                    'device': '192.168.1.11:3001',
+                    'device': '192.168.1.11:3002',
                     'verbose': False,
                     'imu_sample_rate': -1.0,
                     'use_binary_messages': True,
